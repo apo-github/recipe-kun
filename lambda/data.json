@@ -1,7 +1,6 @@
 {
-    "familyId" : 0,
+    "familyId": 0,
     "initialSettings": {
-
         "familyAges": [
             35,
             32,
@@ -25,12 +24,9 @@
         }
     }
 }
-
 {
-
-    "familyId" : 1,
+    "familyId": 1,
     "initialSettings": {
-
         "familyAges": [
             35,
             32,
