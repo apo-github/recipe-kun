@@ -40,8 +40,10 @@ def lambda_handler(event, context):
     # print(num_data, type(num_data))
     # print(num_data)
     family_id = event['family_id']
+    print(f"family_id: {family_id}")
     item = get_data(family_id=family_id)
     print(item)
+    print(8888)
     sentence = "会話しましょう"
     sentence = generate_prompt(item, event)
     output_sentence = send_llm(sentence)
@@ -66,7 +68,7 @@ def generate_prompt(item, event):
         family_info_sentence += f"-{age}歳 ({adult})\n"
     
     ingredients_sentence = ""
-    for ingredient, socer in ingredients.items():
+    for ingredient, score in ingredients.items():
         ingredients_sentence += f"-{ingredient} ({score})\n"
     dish_sentence = ""
     for dish, score in dishes.items():
@@ -154,7 +156,7 @@ def get_data(family_id):
         }
     )
     #responseの正体は、Itemなどのキーが定義された辞書型オブジェクト
-    # print(response)
+    print(f"response: {response}")
 
     #結果の取得
     item = response['Item']
@@ -163,6 +165,7 @@ def get_data(family_id):
     #キーに一致するものがない場合、エラーとなる
     print("返す値")
     print(item)
+    return item
 
 
 
@@ -190,7 +193,9 @@ def send_llm(sentence):
         modelId='anthropic.claude-3-haiku-20240307-v1:0',  # Claude 3 HaikuのモデルID
         body=json.dumps(request_body)
     )
+    print(77777)
     print(f"response: {response}")
+    print(9999)
     # レスポンスの解析
     response_body = json.loads(response['body'].read())
     print(f"response_body: {response_body}")
