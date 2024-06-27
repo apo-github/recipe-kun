@@ -1,8 +1,11 @@
+const endpointUrl = "https://main.d17k9bkqpfd5il.amplifyapp.com/get_info"
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('menuForm').addEventListener('submit', function (e) {
         e.preventDefault();
         const days = document.getElementById('days').value;
         displayCurryMenu(days);
+        api(endpointUrl)
     });
 });
 
@@ -43,4 +46,25 @@ ${curry}
     }
 
     document.getElementById('menuTable').style.display = 'table';
+}
+
+
+// API GatewayのエンドポイントURLを設定
+
+function api(endpointUrl){
+    // Fetch APIを使用してGETリクエストを送信
+    fetch(endpointUrl)
+    .then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json(); // JSON形式でレスポンスを解析
+    })
+    .then(data => {
+    console.log('API Gatewayからのレスポンス:', data);
+    // ここでdataを使った処理を記述
+    })
+    .catch(error => {
+    console.error('Fetchエラー:', error);
+    });
 }
