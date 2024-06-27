@@ -40,5 +40,5 @@ def lambda_handler(event, context):
     print("返す値")
     print(item)
 
-    return item
+
 
