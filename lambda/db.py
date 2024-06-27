@@ -99,7 +99,7 @@ def get_data(family_id):
     print("返す値")
     print(item)
 
-    return item
+
 
 def send_llm(sentence):
     bedrock = boto3.client(

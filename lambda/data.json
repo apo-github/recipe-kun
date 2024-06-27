@@ -24,29 +24,36 @@
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 9136e544a0a227bb8cb4c55859256c99a6f1dbd8
 {
     "familyId": 1,
     "initialSettings": {
         "familyAges": [
-            35,
-            32,
-            7
+            34,
+            30,
+            10
         ],
-        "cookingSkill": 5,
+        "cookingSkill": 10,
         "allergies": [
-            "soy"
+            "Shrimp"
         ]
     },
     "preferences": {
         "ingredients": {
-            "carrot": 10,
-            "onion": 8,
-            "potato": 7
+            "carrot": 1,
+            "onion": 5,
+            "potato": 2
         },
         "dishes": {
             "curry": 10,
-            "hamburger": 9,
-            "salad": 6
+            "hamburger": 10,
+            "salad": 1
         }
     }
 }
