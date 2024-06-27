@@ -1,4 +1,4 @@
-const endpointUrl = "https://main.d17k9bkqpfd5il.amplifyapp.com/get_info"
+const endpointUrl = "https://mbwtn3h217.execute-api.us-west-2.amazonaws.com/stage/get_info"
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('menuForm').addEventListener('submit', function (e) {
