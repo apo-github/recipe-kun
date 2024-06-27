@@ -47,6 +47,10 @@ def lambda_handler(event, context):
     sentence = "会話しましょう"
     sentence = generate_prompt(item, event)
     output_sentence = send_llm(sentence)
+    print("-"*10)
+    print(output_sentence)
+    output_sentence = json.loads(output_sentence)
+    print(output_sentence)
     return {
         'statusCode': 200,
         'body': json.dumps({
@@ -120,13 +124,13 @@ def generate_prompt(item, event):
     "breakfast": {
       "meal": "料理名",
       "cost(yen)": "○○○",
-      "calories": "○○○ kcal"
+      "calories(kcal)": "○○○"
     },
     "lunch": { ... },
     "dinner": { ... },
     "dailyTotal": {
       "cost": "○○○○",
-      "calories": "○○○○ kcal",
+      "calories(kcal)": "○○○○",
     }
   },
   "day2": { ... },
