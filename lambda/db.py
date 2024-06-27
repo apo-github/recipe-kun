@@ -43,7 +43,7 @@ def lambda_handler(event, context):
     item = get_data(family_id=family_id)
     print(item)
     sentence = "会話しましょう"
-    # sentence = generate_prompt(item, event)
+    sentence = generate_prompt(item, event)
     output_sentence = send_llm(sentence)
     return {
         'statusCode': 200,
@@ -60,15 +60,80 @@ def generate_prompt(item, event):
     ingredients = item['preferences']['ingredients']
     dishes = item['preferences']['dishes']
     
-    prompt = "あなたは経験豊富な栄養士兼料理専門家です。以下の条件に従って、5日分の朝昼晩の献立を作成してください。\n"
     family_info_sentence = ""
     for i, age in enumerate(family_lst):
         adult = "大人" if age >= 20 else "子供"
         family_info_sentence += f"-{age}歳 ({adult})\n"
     
     ingredients_sentence = ""
-    for ingredient, amount in ingredients.items():
-        ingredients_sentence += f"-{ingredient} {amount}g\n"
+    for ingredient, socer in ingredients.items():
+        ingredients_sentence += f"-{ingredient} ({score})\n"
+    dish_sentence = ""
+    for dish, score in dishes.items():
+        dish_sentence += f"-{dish} ({score})\n"
+    allergies_sentence = ""
+    for allergy in allergies:
+        allergies_sentence += f"-{allergy} (完全除去)\n"
+        
+    
+    prompt = "あなたは経験豊富な栄養士兼料理専門家です。以下の条件に従って、5日分の朝昼晩の献立を作成してください。\n"
+    prompt += f"家族構成\n{family_info_sentence}\n\n"
+    prompt += f"好み：()内は嗜好度を表す0-10のスケール（10が最も好き、0が最も嫌い）\n"
+    prompt += f"食材\n{ingredients_sentence}\n"
+    prompt += f"料理\n{dish_sentence}\n\n"
+    prompt += f"アレルギー\n{allergies_sentence}\n\n"
+    prompt += """献立作成の条件：
+1. 栄養バランスを考慮し、各食事で主食、主菜、副菜を含める
+2. 年齢に応じた適切なカロリーと栄養素を提供
+3. 嗜好度を考慮し、高スコアの食べ物を優先的に取り入れる（週に2-3回）
+4. 低スコアの食べ物は避けるか、代替案や工夫を提案する
+5. アレルギー食材は完全に除去し、制限のある食材は指定量以下に抑える
+6. 平日の朝食と夕食は30分以内、昼食は15分以内で調理可能な献立にする
+7. 食材の無駄を減らすため、週を通して食材を効率的に使用する
+8. 季節性を考慮し、旬の食材を積極的に取り入れる
+9. 週に1回は新しい料理や食材を試す「チャレンジデー」を設ける
+10. 子供の成長に必要な栄養素を意識的に取り入れる
+
+予算：
+- 1日あたりの食費：3000円以内
+- 週間食費：15000円以内
+
+各食事について以下の情報を提供してください：
+- 料理名
+- 概算費用（1人あたり）
+- 概算カロリー（1人あたり）
+
+追加指示：
+1. 各日の終わりに、その日の総コスト、総カロリー、総炭水化物量を記載してください。
+2. 週間の総コストを最後に記載してください。
+3. 特定の料理に対して、アレルギー対応や低糖質版の代替案がある場合は、コメントとして追加してください。
+4. 栄養バランスや嗜好度を考慮しつつ、できるだけ多様な料理を提案してください。
+5. 献立に使用する主な食材リストを週の最後に追加してください。
+
+出力形式：
+以下のJSON形式で出力してください。
+
+{
+  "day1": {
+    "breakfast": {
+      "meal": "料理名",
+      "cost(yen)": "○○○",
+      "calories": "○○○ kcal"
+    },
+    "lunch": { ... },
+    "dinner": { ... },
+    "dailyTotal": {
+      "cost": "○○○○",
+      "calories": "○○○○ kcal",
+    }
+  },
+  "day2": { ... },
+  ...
+
+}
+    
+    """
+    return prompt
     
     
     
