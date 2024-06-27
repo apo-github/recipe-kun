@@ -1,24 +1,44 @@
-import json
+'''
+{
+	"familyId": 0,
+    "initialSettings": {
+        "familyAges": [
+            35,
+            32,
+            7
+        ]
+    }
+}
+
+
+'''
+
+
 import boto3
-# 使用するDynamoDBテーブルを取得します
-dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('EscapeGameDB')
-# ハンドラを定義します
+
 def lambda_handler(event, context):
-# DynamoDBのパーティションキーを指定する値をeventから受け取ります
-    ID = event['ID']
-# イベントから受け取った値をもとにDynamoDBテーブルの項目を指定し、取得します
+
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('Users')
+
+    #getItemメソッドの呼び出し(主キー検索)
     response = table.get_item(
+        #パラメーターとして主キー情報(辞書型)を渡す
+        #Keyという変数名?は固定(違う名前だとエラーになる)
         Key={
-            'ID':ID
+            'familyId': 0
         }
     )
+    #responseの正体は、Itemなどのキーが定義された辞書型オブジェクト
+    # print(response)
+
+    #結果の取得
     item = response['Item']
-    print(item['Situation'])
-    name = 'name'
-# DynamoDBテーブルからから取得した項目をウェブページに返します
-    return {
-        'statusCode': 200,
-        'body': item
-    }    
-}
+
+    #辞書型オブジェクトとして取得できる(テーブルのカラムが定義されている)
+    #キーに一致するものがない場合、エラーとなる
+    print("返す値")
+    print(item)
+
+    return item
+

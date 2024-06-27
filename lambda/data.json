@@ -1,0 +1,56 @@
+{
+    "familyId" : 0,
+    "initialSettings": {
+
+        "familyAges": [
+            35,
+            32,
+            7
+        ],
+        "cookingSkill": 5,
+        "allergies": [
+            "soy"
+        ]
+    },
+    "preferences": {
+        "ingredients": {
+            "carrot": 10,
+            "onion": 8,
+            "potato": 7
+        },
+        "dishes": {
+            "curry": 10,
+            "hamburger": 9,
+            "salad": 6
+        }
+    }
+}
+
+{
+
+    "familyId" : 1,
+    "initialSettings": {
+
+        "familyAges": [
+            35,
+            32,
+            7
+        ],
+        "cookingSkill": 5,
+        "allergies": [
+            "soy"
+        ]
+    },
+    "preferences": {
+        "ingredients": {
+            "carrot": 10,
+            "onion": 8,
+            "potato": 7
+        },
+        "dishes": {
+            "curry": 10,
+            "hamburger": 9,
+            "salad": 6
+        }
+    }
+}
