@@ -1,5 +1,5 @@
-const endpointUrl = "https://mbwtn3h217.execute-api.us-west-2.amazonaws.com/stage"
-
+// const endpointUrl = "https://mbwtn3h217.execute-api.us-west-2.amazonaws.com/stage"
+const endpointUrl = "https://o6nc0axucd.execute-api.us-west-2.amazonaws.com/test"
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('menuForm').addEventListener('submit', function (e) {
         e.preventDefault();
