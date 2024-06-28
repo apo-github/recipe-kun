@@ -68,11 +68,8 @@ def lambda_handler(event, context):
     print(output_sentence)
     return {
         'statusCode': 200,
-        'body': json.dumps({
-            'generated_text': output_sentence
-        })
+        'body': output_sentence
     }
-
 def generate_prompt(item, event):
     # family_id = event['family_id']
     num_day = event['num_day']
