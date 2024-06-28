@@ -1,0 +1,128 @@
+{
+"day1": {
+"breakfast": {
+"meal": "オートミール入り野菜スープ",
+"cost(yen)": 250,
+"calories(kcal)": 320
+},
+"lunch": {
+"meal": "ターメリックチキンサラダ",
+"cost(yen)": 450,
+"calories(kcal)": 550
+},
+"dinner": {
+"meal": "豚肉と野菜の甘酢炒め",
+"cost(yen)": 600,
+"calories(kcal)": 680
+},
+"dailyTotal": {
+"cost": 1300,
+"calories(kcal)": 1550,
+"carbs(g)": 150
+}
+},
+"day2": {
+"breakfast": {
+"meal": "アボカドとスクランブルエッグ",
+"cost(yen)": 300,
+"calories(kcal)": 420
+},
+"lunch": {
+"meal": "ハンバーガー (小麦不使用のバンズ)",
+"cost(yen)": 600,
+"calories(kcal)": 720
+},
+"dinner": {
+"meal": "カレーライス (豆乳ベース)",
+"cost(yen)": 550,
+"calories(kcal)": 650
+},
+"dailyTotal": {
+"cost": 1450,
+"calories(kcal)": 1790,
+"carbs(g)": 160
+}
+},
+"day3": {
+"breakfast": {
+"meal": "チアプディング",
+"cost(yen)": 200,
+"calories(kcal)": 280
+},
+"lunch": {
+"meal": "春雨サラダ",
+"cost(yen)": 350,
+"calories(kcal)": 420
+},
+"dinner": {
+"meal": "手羽先の塩麹焼き",
+"cost(yen)": 500,
+"calories(kcal)": 600
+},
+"dailyTotal": {
+"cost": 1050,
+"calories(kcal)": 1300,
+"carbs(g)": 120
+}
+},
+"day4": {
+"breakfast": {
+"meal": "オートミールとフルーツの朝食ボウル",
+"cost(yen)": 300,
+"calories(kcal)": 380
+},
+"lunch": {
+"meal": "ビーツとフェタの夏サラダ",
+"cost(yen)": 450,
+"calories(kcal)": 500
+},
+"dinner": {
+"meal": "タコライス (豆乳クリームソース)",
+"cost(yen)": 650,
+"calories(kcal)": 720
+},
+"dailyTotal": {
+"cost": 1400,
+"calories(kcal)": 1600,
+"carbs(g)": 170
+}
+},
+"day5": {
+"breakfast": {
+"meal": "アボカドトースト",
+"cost(yen)": 250,
+"calories(kcal)": 350
+},
+"lunch": {
+"meal": "豆腐ハンバーガー",
+"cost(yen)": 400,
+"calories(kcal)": 500
+},
+"dinner": {
+"meal": "ローストチキンとハーブ焼き野菜",
+"cost(yen)": 700,
+"calories(kcal)": 650
+},
+"dailyTotal": {
+"cost": 1350,
+"calories(kcal)": 1500,
+"carbs(g)": 130
+}
+},
+"weeklyTotal": {
+"cost": 6550
+}
+}
+コメント:
+- カレーライスは豆乳ベースにすることで、大豆アレルギーを回避しています。
+- ハンバーガーのバンズは小麦不使用のものを使用しています。
+- タコライスの豆乳クリームソースは、アレルギー対応として提案しています。
+- 低糖質食がお好みの場合は、オートミールやパンなどの代わりに、野菜やタンパク質を増やすことをおすすめします。
+主な使用食材:
+- 野菜 (玉ねぎ、ポテト、ニンジン、キャベツ、ピーマン、ビーツ、アボカド、きのこ類など)
+- 肉類 (鶏肉、豚肉、牛肉)
+- 卵
+- 豆腐
+- 乳製品 (牛乳、ヨーグルト、チーズなど。大豆アレルギー対応のため牛乳ベースを使用)
+- 穀物 (オートミール、玄米、パン、春雨など)
+- 調味料 (塩、胡椒、スパイス、酢、しょうゆ、味噌、米酢など)

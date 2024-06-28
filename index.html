@@ -11,22 +11,21 @@
 </head>
 
 <body>
-
     カレー献立提案システム
-
-
     <form id="menuForm">
-        <label for="days">献立が欲しい日数：
-            <select id="days" name="days">
-                <option value="1">1日分</option>
-                <option value="2">2日分</option>
-                <option value="3">3日分</option>
-                <option value="4">4日分</option>
-                <option value="5">5日分</option>
-                <option value="6">6日分</option>
-                <option value="7">7日分</option>
-            </select>
-            <button type="submit">献立を生成</button>
+        <label for="familyId">家族ID：
+            <input type="text" id="familyId" name="familyId" required>
+            <label for="days">献立が欲しい日数：
+                <select id="days" name="days">
+                    <option value="1">1日分</option>
+                    <option value="2">2日分</option>
+                    <option value="3">3日分</option>
+                    <option value="4">4日分</option>
+                    <option value="5">5日分</option>
+                    <option value="6">6日分</option>
+                    <option value="7">7日分</option>
+                </select>
+                <button type="submit">献立を生成</button>
     </form>
 
     <div id="result">

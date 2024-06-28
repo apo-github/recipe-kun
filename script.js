@@ -3,9 +3,10 @@ const endpointUrl = "https://mbwtn3h217.execute-api.us-west-2.amazonaws.com/stag
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('menuForm').addEventListener('submit', function (e) {
         e.preventDefault();
+        const familyId = document.getElementById('familyId').value;
         const days = document.getElementById('days').value;
         displayCurryMenu(days);
-        api(endpointUrl)
+        api(endpointUrl, familyId, days);
     });
 });
 
@@ -72,18 +73,18 @@ ${curry}
 
 
 // ポストでとってくるパターン
-function api(endpointUrl){
+function api(endpointUrl, familyId, numDay) {
     fetch(endpointUrl, {
         method: "POST",
         body: JSON.stringify({
-        familiy_Id: 1,
-        
-        completed: false
+            family_Id: familyId,
+            num_day: numDay
         }),
         headers: {
-        "Content-type": "application/json; charset=UTF-8"
+            "Content-type": "application/json; charset=UTF-8"
         }
     })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+        .then((response) => response.json())
+        .then((json) => console.log(json))
+        .catch((error) => console.error('Error:', error));
 }

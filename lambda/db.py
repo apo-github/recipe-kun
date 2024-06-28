@@ -39,17 +39,20 @@ def lambda_handler(event, context):
 
     # print(num_data, type(num_data))
     # print(num_data)
+    event = json.loads(event['body'])
     family_id = event['family_id']
     print(f"family_id: {family_id}")
     item = get_data(family_id=family_id)
     print(item)
-    print(8888)
     sentence = "会話しましょう"
     sentence = generate_prompt(item, event)
     output_sentence = send_llm(sentence)
     print("-"*10)
+    print(f"{type(output_sentence)=}")
     print(output_sentence)
+    print("ここまでがoutputsentence")
     output_sentence = json.loads(output_sentence)
+    print("ssssssssssssss")
     print(output_sentence)
     return {
         'statusCode': 200,
@@ -117,7 +120,7 @@ def generate_prompt(item, event):
 5. 献立に使用する主な食材リストを週の最後に追加してください。
 
 出力形式：
-以下のJSON形式で出力してください。
+以下のJSON形式で出力してください。下記のjson形式以外で絶対に出力しないでください。それ以外の形式で出力したらペナルティを与えます。
 
 {
   "day1": {
@@ -137,7 +140,6 @@ def generate_prompt(item, event):
   ...
 
 }
-    
     """
     return prompt
     
@@ -190,11 +192,12 @@ def send_llm(sentence):
                 }]
             }
         ],
-        "max_tokens": 500,
+        "max_tokens":10000,
     }
     # Bedrockを使用してClaude 3 Haikuにリクエストを送信
     response = bedrock.invoke_model(
-        modelId='anthropic.claude-3-haiku-20240307-v1:0',  # Claude 3 HaikuのモデルID
+        # modelId='anthropic.claude-3-haiku-20240307-v1:0',  # Claude 3 HaikuのモデルID
+        modelId='anthropic.claude-3-sonnet-20240229-v1:0',  # Claude 3 HaikuのモデルID
         body=json.dumps(request_body)
     )
     print(77777)
