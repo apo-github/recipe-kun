@@ -77,7 +77,7 @@ function api(endpointUrl, familyId, numDay) {
     fetch(endpointUrl, {
         method: "POST",
         body: JSON.stringify({
-            family_Id: familyId,
+            family_id: familyId,
             num_day: numDay
         }),
         headers: {

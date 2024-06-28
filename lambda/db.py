@@ -45,8 +45,12 @@ def lambda_handler(event, context):
     item = get_data(family_id=family_id)
     print(item)
     sentence = "会話しましょう"
+    
+    output_sentence ={"success?????????":True}
+    output_sentence = json.dumps(output_sentence)
+    
     sentence = generate_prompt(item, event)
-    output_sentence = send_llm(sentence)
+    # output_sentence = send_llm(sentence)
     print("-"*10)
     print(f"{type(output_sentence)=}")
     print(output_sentence)
