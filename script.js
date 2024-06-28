@@ -1,4 +1,4 @@
-const endpointUrl = "https://mbwtn3h217.execute-api.us-west-2.amazonaws.com/stage/get_info"
+const endpointUrl = "https://mbwtn3h217.execute-api.us-west-2.amazonaws.com/stage"
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('menuForm').addEventListener('submit', function (e) {
@@ -51,20 +51,39 @@ ${curry}
 
 // API GatewayのエンドポイントURLを設定
 
+// getでとってくるパターン
+// function api(endpointUrl){
+//     // Fetch APIを使用してGETリクエストを送信
+//     fetch(endpointUrl)
+//     .then(response => {
+//     if (!response.ok) {
+//         throw new Error('Network response was not ok');
+//     }
+//     return response.json(); // JSON形式でレスポンスを解析
+//     })
+//     .then(data => {
+//     console.log('API Gatewayからのレスポンス:', data);
+//     // ここでdataを使った処理を記述
+//     })
+//     .catch(error => {
+//     console.error('Fetchエラー:', error);
+//     });
+// }
+
+
+// ポストでとってくるパターン
 function api(endpointUrl){
-    // Fetch APIを使用してGETリクエストを送信
-    fetch(endpointUrl)
-    .then(response => {
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.json(); // JSON形式でレスポンスを解析
+    fetch(endpointUrl, {
+        method: "POST",
+        body: JSON.stringify({
+        familiy_Id: 1,
+        
+        completed: false
+        }),
+        headers: {
+        "Content-type": "application/json; charset=UTF-8"
+        }
     })
-    .then(data => {
-    console.log('API Gatewayからのレスポンス:', data);
-    // ここでdataを使った処理を記述
-    })
-    .catch(error => {
-    console.error('Fetchエラー:', error);
-    });
+    .then((response) => response.json())
+    .then((json) => console.log(json));
 }
