@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
 function displayCurryMenu(days) {
     const tableBody = document.getElementById('menuTableBody');
     tableBody.innerHTML = ''; // テーブルをクリア
@@ -32,12 +36,13 @@ function displayCurryMenu(days) {
         for (let j = 1; j <= 3; j++) {
             const cell = row.insertCell(j);
             const curry = curryTypes[Math.floor(Math.random() * curryTypes.length)];
+            
             cell.innerHTML = `
                 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                     
 ${curry}
 
-                    <img src="img/a.png" alt="${curry}" style="width: 150px; height: 150px; margin-top: 5px;">
+                    <img src="img/${getRandomInt(7)}.png" alt="${curry}" style="width: 150px; height: 150px; margin-top: 5px;">
                 
             `;
         }
@@ -84,8 +89,35 @@ function api(endpointUrl, familyId, numDay) {
             "Content-type": "application/json; charset=UTF-8"
         },
         mode: "no-cors"
-    })
-        .then((response) => console.log('API Gatewayからのレスポンス:', response))
+      })
+      .then(function (data) {
+        console.log(data);
+        return data.json(); // 読み込むデータをJSONに設定
+      })
+    //   .then(function (json) {
+    //     for (var i = 0; i < json.length; i++) {
+    //       var tmp = json[i].body;
+    //       console.log(tmp);
+    //     }
+// })
+    
+    //   .then(response => {
+    //     console.log(response.text());
+    //     // return response.text();
+    //   })
+
+    // fetch(endpointUrl, {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //         family_id: familyId,
+    //         num_day: numDay
+    //     }),
+    //     headers: {
+    //         "Content-type": "application/json; charset=UTF-8"
+    //     },
+    //     mode: "no-cors"
+    // })
+    // .then((response) => console.log('API Gatewayからのレスポンス:', response))
     // .then((data) => console.log('API Gatewayからのレスポンス:', data))
     // .catch((error) => console.log('Error:', error));
 }
