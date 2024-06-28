@@ -42,7 +42,7 @@ def lambda_handler(event, context):
     # print(num_data)
     print("log info")
     print(event)
-    # event = json.loads(event['body'])
+    event = json.loads(event['body'])
     family_id = event['family_id']
     print(f"family_id: {family_id}")
     print('9999999999999999999')
@@ -54,7 +54,7 @@ def lambda_handler(event, context):
     print(item)
     sentence = "会話しましょう"
     
-    output_sentence ={"success?????????":True}
+    output_sentence ={"success?????????":"aaa"}
     output_sentence = json.dumps(output_sentence)
     
     sentence = generate_prompt(item, event)
@@ -67,8 +67,14 @@ def lambda_handler(event, context):
     print("ssssssssssssss")
     print(output_sentence)
     return {
+        "isBase64Encoded": True,
         'statusCode': 200,
-        'body': output_sentence
+        "headers": {
+            "Access-Control-Allow-Origin": "*",  # CORSを許可する場合
+            "Content-Type": "application/json"
+        },
+        
+        "body": json.dumps({"a":"aaa"})
     }
 def generate_prompt(item, event):
     # family_id = event['family_id']
@@ -92,7 +98,6 @@ def generate_prompt(item, event):
     allergies_sentence = ""
     for allergy in allergies:
         allergies_sentence += f"-{allergy} (完全除去)\n"
-        
     
     prompt = "あなたは経験豊富な栄養士兼料理専門家です。以下の条件に従って、5日分の朝昼晩の献立を作成してください。\n"
     prompt += f"家族構成\n{family_info_sentence}\n\n"
