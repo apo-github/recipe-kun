@@ -85,7 +85,7 @@ function api(endpointUrl, familyId, numDay) {
         },
         mode: "no-cors"
     })
-        .then((response) => response.json())
-        .then((data) => console.log('API Gatewayからのレスポンス:', data))
-        .catch((error) => console.log('Error:', error));
+        .then((response) => console.log('API Gatewayからのレスポンス:', response))
+    // .then((data) => console.log('API Gatewayからのレスポンス:', data))
+    // .catch((error) => console.log('Error:', error));
 }
