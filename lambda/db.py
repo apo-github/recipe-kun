@@ -36,13 +36,20 @@ import boto3
 import json
 
 def lambda_handler(event, context):
-
+    
+    
     # print(num_data, type(num_data))
     # print(num_data)
+    print("log info")
     print(event)
-    event = json.loads(event['body'])
+    # event = json.loads(event['body'])
     family_id = event['family_id']
     print(f"family_id: {family_id}")
+    print('9999999999999999999')
+    print(f"{family_id=}") # 	family_id='0'
+    family_id = int(family_id)
+    print(f"type: {type(family_id)}")
+    # family_id  = str(family_id)
     item = get_data(family_id=family_id)
     print(item)
     sentence = "会話しましょう"

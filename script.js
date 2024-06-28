@@ -89,6 +89,15 @@ function api(endpointUrl, familyId, numDay) {
             console.log('API Gatewayからのレスポンス:', response)
             console.log("respose.body", response.body)
         })
+        .then((data) => {
+            console.log('API Gatewayからのレスポンス:', data)
+            // ここでdata.generated_textを使用して何かを行います
+            const generatedText = data.generated_text;
+            console.log(generatedText);
+
+        }
+        )
+
 
 
     // .then((data) => console.log('API Gatewayからのレスポンス:', data))
