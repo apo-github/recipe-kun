@@ -39,6 +39,7 @@ def lambda_handler(event, context):
 
     # print(num_data, type(num_data))
     # print(num_data)
+    print(event)
     event = json.loads(event['body'])
     family_id = event['family_id']
     print(f"family_id: {family_id}")
