@@ -82,7 +82,7 @@ function api(endpointUrl, familyId, numDay) {
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8"
-        },
+        }
         // mode: "no-cors"
     })
         .then((response) => {
