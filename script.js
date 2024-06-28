@@ -87,5 +87,5 @@ function api(endpointUrl, familyId, numDay) {
     })
         .then((response) => response.json())
         .then((data) => console.log('API Gatewayからのレスポンス:', data))
-        .catch((error) => console.error('Error:', error));
+        .catch((error) => console.log('Error:', error));
 }
